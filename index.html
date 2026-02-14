@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi San Valentin ❤️</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'val-red': '#D61C4E',      /* Rojo Intenso */
+                        'val-pink': '#FAD4D8',     /* Rosa Pálido */
+                        'sun-yellow': '#FFD700',   /* Girasol */
+                        'sun-orange': '#FFA500',   /* Centro Girasol */
+                        'sully-cyan': '#00A8C6',   /* Piel Sullivan */
+                        'sully-purple': '#A066C5', /* Manchas Sullivan */
+                    },
+                    fontFamily: {
+                        'heading': ['"Fredoka"', 'sans-serif'],
+                        'body': ['"Nunito"', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 1s ease-out forwards',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { transition: background-image 1.5s ease-in-out, background-color 1.5s ease-in-out; }
+        /* Clase de utilidad para ocultar secciones completamente */
+        .hidden-step { display: none !important; }
+    </style>
+</head>
+
+<body id="main-body" class="bg-gradient-to-br from-red-50 via-pink-50 to-red-100 min-h-screen flex items-center justify-center p-4 font-body overflow-x-hidden selection:bg-val-red selection:text-white">
+
+    <main class="w-full max-w-md relative">
+
+        <section id="step-0" class="min-h-screen flex flex-col justify-center items-center text-center animate-fadeIn relative z-10 py-6">
+            
+            <div class="mb-4 animate-pulse-slow">
+                <i class="bi bi-heart-fill text-5xl text-val-red filter drop-shadow-md"></i>
+            </div>
+
+            <h1 class="text-5xl font-heading font-bold text-gray-800 mb-2 leading-tight">
+                Happy<br><span class="text-val-red">Valentine's</span><br>Day
+            </h1>
+
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl shadow-xl border border-pink-100 mx-2 mt-6 transform transition-all duration-500 hover:shadow-2xl">
+                
+                <h3 class="text-val-red font-bold text-lg mb-4 uppercase tracking-wider">La Historia Real</h3>
+                
+                <p class="text-gray-600 text-md leading-relaxed mb-4 text-justify">
+                    Dicen que un antiguo Emperador prohibió el amor para crear "soldados perfectos": hombres sin miedo y sin nada que perder.
+                </p>
+                <p class="text-gray-600 text-md leading-relaxed mb-6 text-justify">
+                    Pero Valentín desafió al imperio. Él sabía que el verdadero coraje no nace de estar solo, sino de tener <span class="text-val-red font-bold">a alguien por quien luchar</span>.
+                </p>
+                
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-val-red/30 to-transparent my-6"></div>
+
+                <p class="text-gray-800 font-medium italic text-lg">
+                    "Hoy celebro esa valentía. La tuya al elegirme y la mía al encontrarte."
+                </p>
+            </div>
+
+            <button onclick="goToStep1()" class="mt-8 bg-val-red hover:bg-red-700 text-white font-bold py-4 px-12 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 flex items-center gap-3 text-lg tracking-wide ring-4 ring-red-100">
+                Ver regalo <i class="bi bi-arrow-right"></i>
+            </button>
+        </section>
+
+
+        <section id="step-1" class="hidden-step opacity-0 bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 text-center border-t-8 border-sun-yellow relative z-10 mt-10">
+            <div class="text-6xl mb-4 animate-float">🌻</div>
+            
+            <h1 class="text-3xl font-heading font-bold text-orange-600 mb-4 leading-tight">
+                Para la mujer que ilumina mis días
+            </h1>
+            
+            <div class="rounded-2xl overflow-hidden shadow-lg mb-6 border-4 border-yellow-200">
+                <img src="/foto_1.jpeg" 
+                     alt="Girasol" class="w-full h-38 object-cover">
+            </div>
+
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                Sabes que los girasoles siempre buscan la luz para crecer... Pero contigo me pasa algo curioso: 
+                <span class="font-bold text-orange-500">no necesito buscar el sol, porque tú eres quien trae la luz a mi vida.</span>
+            </p>
+
+            <button onclick="goToStep2()" class="w-full bg-gradient-to-r from-sun-yellow to-sun-orange text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2">
+                Pero hay algo más... <i class="bi bi-arrow-right-circle-fill"></i>
+            </button>
+        </section>
+
+
+        <section id="step-2" class="hidden-step opacity-0 bg-white/95 rounded-3xl shadow-2xl p-8 text-center border-t-8 border-sully-cyan relative z-10 mt-10">
+            
+            <div class="text-6xl mb-2 animate-float">👷‍♀️</div>
+            
+            <h2 class="text-2xl font-heading font-bold text-sully-cyan mb-2">
+                Mi Ingeniera, mi Boo
+            </h2>
+
+            <div class="relative w-40 h-40 mx-auto my-6">
+                <div class="absolute inset-0 bg-sully-purple/20 rounded-full animate-pulse"></div>
+                <img src="/foto_2.png" 
+                     alt="Boo con Casco" 
+                     class="w-full h-full object-cover rounded-full border-4 border-sully-purple shadow-md relative z-10">
+            </div>
+
+            <div class="text-left bg-blue-50 p-4 rounded-xl border border-blue-100 mb-6">
+                <p class="text-gray-700 mb-4 leading-relaxed text-sm">
+                    El mundo ve a una ingeniera firme y capaz. Yo también. Pero cuando te pones ese casco... pasa la magia.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-sm">
+                    Te veo ahí, luchando contra el mundo con ese casco que a veces te queda grande, y <strong>me recuerdas a Boo.</strong>
+                    <br><br>
+                    Esa mezcla de tu valentía profesional con esa ternura infinita es una de las cosas que me tiene enamorado.
+                </p>
+            </div>
+            
+            <button onclick="goToStep3()" class="w-full bg-gradient-to-r from-sully-cyan to-sully-purple text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2">
+                Ver tu sorpresa <i class="bi bi-gift-fill"></i>
+            </button>
+        </section>
+
+
+        <section id="step-3" class="hidden-step opacity-0 bg-white rounded-3xl shadow-2xl p-6 text-center border-t-8 border-sully-purple relative z-10 overflow-hidden mt-10">
+            
+            <h2 class="text-2xl font-heading font-bold text-sully-purple mb-2">
+                Y toda Boo necesita a su Sullivan
+            </h2>
+            
+            <p class="text-gray-600 text-sm mb-6">
+                Si tú eres valiente bajo ese casco, yo soy tu lugar seguro.
+            </p>
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-200 shadow-sm">
+                    <div class="text-3xl mb-1">🌻</div>
+                    <h3 class="font-bold text-orange-500 text-sm">Girasoles</h3>
+                    <p class="text-xs text-gray-500">Para que nunca olvides tu luz.</p>
+                </div>
+                <div class="bg-purple-50 p-3 rounded-xl border border-purple-200 shadow-sm">
+                    <div class="text-3xl mb-1">😼</div>
+                    <h3 class="font-bold text-sully-purple text-sm">Sullivan</h3>
+                    <p class="text-xs text-gray-500">Peluche para cuidarte</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-sully-cyan/10 to-sully-purple/10 p-5 rounded-xl border border-sully-cyan/20 mb-6">
+                <p class="text-gray-800 font-medium italic">
+                    "No soy un monstruo, soy tu novio que es más alto que tú y que te protegerá, sin importar qué tan pesado sea el casco ese día."
+                </p>
+                <div class="mt-3 flex justify-end">
+                    <span class="text-xs font-bold text-sully-purple bg-white px-2 py-1 rounded-full shadow-sm">
+                        - Tu Sullivan ❤️
+                    </span>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="text-gray-400 text-xs tracking-widest uppercase mb-1">Feliz 14 de Febrero</p>
+                <p class="text-3xl font-heading text-red-500 animate-pulse">¡Te Amo!</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        const body = document.getElementById('main-body');
+        const step0 = document.getElementById('step-0');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+
+        // Función auxiliar para subir el scroll al cambiar de pantalla
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Transición 0 (Intro) -> 1 (Girasoles)
+        function goToStep1() {
+            // 1. Desvanecer Intro
+            step0.style.transition = 'all 0.5s ease';
+            step0.style.opacity = '0';
+            step0.style.transform = 'translateY(-20px)';
+
+            setTimeout(() => {
+                // 2. Ocultar completamente Intro
+                step0.classList.add('hidden-step');
+                scrollToTop();
+
+                // 3. Cambiar fondo (De Rojo a Amarillo)
+                body.classList.remove('from-red-50', 'via-pink-50', 'to-red-100');
+                body.classList.add('bg-gradient-to-br', 'from-yellow-50', 'via-yellow-100', 'to-orange-100');
+
+                // 4. Mostrar Girasoles
+                step1.classList.remove('hidden-step');
+                setTimeout(() => {
+                    step1.classList.remove('opacity-0');
+                    step1.classList.add('animate-fadeIn');
+                }, 50);
+            }, 500);
+        }
+
+        // Transición 1 (Girasoles) -> 2 (Ingeniera)
+        function goToStep2() {
+            step1.style.transition = 'all 0.5s ease';
+            step1.style.opacity = '0';
+            step1.style.transform = 'translateY(-20px)';
+
+            setTimeout(() => {
+                step1.classList.add('hidden-step');
+                scrollToTop();
+                
+                // Cambiar fondo (De Amarillo a Azul Sullivan)
+                body.classList.remove('from-yellow-50', 'via-yellow-100', 'to-orange-100');
+                body.classList.add('bg-gradient-to-br', 'from-cyan-100', 'via-blue-50', 'to-purple-100');
+
+                step2.classList.remove('hidden-step');
+                setTimeout(() => {
+                    step2.classList.remove('opacity-0');
+                    step2.classList.add('animate-fadeIn');
+                }, 50);
+            }, 500);
+        }
+
+        // Transición 2 (Ingeniera) -> 3 (Final)
+        function goToStep3() {
+            step2.style.transition = 'all 0.5s ease';
+            step2.style.opacity = '0';
+            step2.style.transform = 'translateY(-20px)';
+
+            setTimeout(() => {
+                step2.classList.add('hidden-step');
+                scrollToTop();
+                
+                step3.classList.remove('hidden-step');
+                setTimeout(() => {
+                    step3.classList.remove('opacity-0');
+                    step3.classList.add('animate-fadeIn');
+                    launchConfetti();
+                }, 50);
+            }, 500);
+        }
+
+        function launchConfetti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            var random = function(min, max) { return Math.random() * (max - min) + min; }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) return clearInterval(interval);
+                var particleCount = 50 * (timeLeft / duration);
+                
+                // Confeti temático (Azul, Morado y Rojo)
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 },
+                    colors: ['#00A8C6', '#A066C5', '#FF0000']
+                }));
+                confetti(Object.assign({}, defaults, { 
+                    particleCount, 
+                    origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 },
+                    colors: ['#00A8C6', '#A066C5', '#FF0000']
+                }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
